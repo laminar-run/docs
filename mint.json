@@ -21,16 +21,6 @@
     "name": "Sign In",
     "url": "https://app.laminar.run/auth/signin"
   },
-  "tabs": [
-    {
-      "name": "Operations",
-      "url": "operations"
-    },
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
   "navigation": [
     {
       "group": "Get Started",
@@ -38,63 +28,6 @@
         "introduction",
         "quickstart",
         "reading-the-docs"
-      ]
-    },
-    {
-      "group": "Operations",
-      "pages": [
-        "operations/concepts"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/authentication"
-      ]
-    },
-    {
-      "group": "Accounts",
-      "pages": [
-        "api-reference/accounts/get",
-        "api-reference/accounts/create",
-        "api-reference/accounts/update",
-        "api-reference/accounts/delete"
-      ]
-    },
-    {
-      "group": "Workspaces",
-      "pages": [
-        "api-reference/workspaces/get",
-        "api-reference/workspaces/create",
-        "api-reference/workspaces/update",
-        "api-reference/workspaces/delete"
-      ]
-    },
-    {
-      "group": "API Keys",
-      "pages": [
-        "api-reference/api-keys/get",
-        "api-reference/api-keys/create",
-        "api-reference/api-keys/update",
-        "api-reference/api-keys/delete"
-      ]
-    },
-    {
-      "group": "Nodes",
-      "pages": [
-        "api-reference/nodes/get",
-        "api-reference/nodes/create",
-        "api-reference/nodes/update",
-        "api-reference/nodes/delete"
-      ]
-    },
-    {
-      "group": "Flows",
-      "pages": [
-        "api-reference/flows/get",
-        "api-reference/flows/create",
-        "api-reference/flows/update",
-        "api-reference/flows/delete"
       ]
     }
   ],
