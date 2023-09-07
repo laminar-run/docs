@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: 'Learn more about Laminar and how to get started.'
+description: 'Learn more about Laminar'
 ---
 
 ## Getting started with Laminar
@@ -9,6 +9,69 @@ Welcome to Laminar! We're excited to help you build API integrations faster.
 
 ### What is Laminar?
 
-Laminar is a tool that helps your engineering team build API integations faster.
+Laminar is a tool that helps your engineering team build API integations faster, whether that be internal or external.
 
-API integrations are painful to build and maintain. 
+### Why are integrations hard?
+
+API integrations don't add to your business' value proposition... but customers expect them.
+
+Building an integration involves writing code to transform data of one format into another. This type of code is complicated and requires a lot of testing. Which means it can take engineers **1-2+ sprint cycles** to ship an integration.
+
+Engineering hours are **expensive** and should be used to build product.
+
+<AccordionGroup>
+    <Accordion title="Read more">
+        Sometimes having the right integrations can be the difference between winning and losing a deal. But taking an engineer off building product features can be costly.
+
+        The reason it can take so long is because there are a lot of things that need to be done:
+
+        - **Data transformation**
+            - Transforming data is the riskiest and most complicated part of building an integration. It's usually where things go wrong due to how complicated the code can be.
+            - Efficent data transformation code is hard to write, and can be a performance bottleneck.
+            - Every API has different data formats, which means the data transformation code needs to be written from scratch for every integration.
+        - **Error handling**
+            - Handling errors from the API you're integrating with is important, but it's hard to do well.
+            - Anticipating all the different types of errors that can occur is hard.
+            - Differences in API responses can cause your application to crash.
+        - **Testing**
+            - Writing tests for integrations require a lot of mocking.
+            - Edge cases are not the easiest to find, and can be hard to reproduce/mock.
+        - **Monitoring**
+            - Understanding where issues are happening in your integration in production can be extremely time consuming if proper logging isn't in place.
+            - Logging for every operation of an integration can be a lot of work, and can be hard to standardize across your application.
+        - **Maintenance**
+            - APIs change over time, and integrations need to be updated to reflect those changes.
+            - This can take a lot of time, especially if the previous data transformation code was complicated.
+        - **Authentication**
+            - Different APIs require different types of authentication.
+            - Authentication is a security risk, and needs to be done properly.
+
+        Integrations are written in your application's codebase, which impact your application's performance due to the complexity of some of the data transformation code as you scale.
+    </Accordion>
+</AccordionGroup>
+
+### How does Laminar help?
+
+Laminar handles transforming data while it is being transferred. This means **no code** in your application handling data transformation.
+
+Engineers specify how data should be transformed in Laminar using operations written in **JSON**.
+
+With less production code to write, engineers can ship integrations in **1-2 days** instead of 1-2+ sprint cycles.
+
+### Want to learn more?
+
+<CardGroup>
+
+<Card
+  title="Book A Demo"
+  icon="square-code"
+  href="https://calendly.com/faiz-laminar/30min"
+>
+    Let us show you how Laminar can help your team build integrations faster.
+</Card>
+
+<Card title="Get In Touch" icon="envelope" href="mailto:connect@laminar.run">
+    We'd love to hear your integration horror stories, and figure out how we can help.
+</Card>
+
+</CardGroup>
