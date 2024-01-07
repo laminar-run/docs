@@ -21,12 +21,56 @@
     "name": "Sign In",
     "url": "https://app.laminar.run/auth/signin"
   },
+  "tabs": [
+    {
+        "name": "Language Reference",
+        "url": "lam"
+    },
+    {
+        "name": "Laminar API Reference",
+        "url": "api-reference"
+    }
+  ],
   "navigation": [
     {
       "group": "Laminar",
       "pages": [
         "introduction",
         "try-it-out"
+      ]
+    },
+    {
+      "group": "Language Reference",
+      "pages": [
+        "lam/introduction",
+        "lam/playground"
+      ]
+    },
+    {
+      "group": "Laminar API Reference",
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/flow-controller/get-flows",
+        "api-reference/flow-controller/post-flows",
+        "api-reference/flow-controller/put-flows",
+        "api-reference/flow-controller/delete-flows",
+        "api-reference/flow-controller/get-flowsread",
+        "api-reference/flow-controller/post-flowsexecute",
+        "api-reference/flow-controller/get-flows-versions",
+        "api-reference/flow-controller/get-flows-runs",
+        "api-reference/user-controller/get-users",
+        "api-reference/user-controller/post-users",
+        "api-reference/user-controller/put-users",
+        "api-reference/user-controller/delete-users",
+        "api-reference/user-controller/get-users-1",
+        "api-reference/workspace-controller/get-workspaces",
+        "api-reference/workspace-controller/post-workspaces",
+        "api-reference/workspace-controller/put-workspaces",
+        "api-reference/workspace-controller/delete-workspaces",
+        "api-reference/workspace-controller/get-workspaces-1",
+        "api-reference/workspace-controller/post-workspaces-users",
+        "api-reference/workspace-controller/delete-workspaces-users",
+        "api-reference/transform/post-transformtest"
       ]
     }
   ],

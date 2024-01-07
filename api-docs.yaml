@@ -1,0 +1,650 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: https://api.laminar.run
+  description: Generated server url
+paths:
+  /workspaces/{id}:
+    get:
+      tags:
+      - workspace-controller
+      operationId: getWorkspaceById
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Workspace'
+    put:
+      tags:
+      - workspace-controller
+      operationId: updateWorkspaceName
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Workspace'
+    delete:
+      tags:
+      - workspace-controller
+      operationId: deleteWorkspace
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /users/{id}:
+    get:
+      tags:
+      - user-controller
+      operationId: getUserById
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      tags:
+      - user-controller
+      operationId: updateUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+    delete:
+      tags:
+      - user-controller
+      operationId: deleteUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /flows:
+    put:
+      tags:
+      - flow-controller
+      operationId: updateFlow
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFlow'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Flow'
+    post:
+      tags:
+      - flow-controller
+      operationId: createFlow
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFlow'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Flow'
+  /workspaces:
+    get:
+      tags:
+      - workspace-controller
+      operationId: getAllWorkspaces
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Workspace'
+    post:
+      tags:
+      - workspace-controller
+      operationId: createWorkspace
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: name
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Workspace'
+  /workspaces/{workspaceId}/users:
+    post:
+      tags:
+      - workspace-controller
+      operationId: addUserToWorkspace
+      parameters:
+      - name: requestingUserEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: role
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - OWNER
+          - ADMIN
+          - MEMBER
+          - GUEST
+      responses:
+        "200":
+          description: OK
+    delete:
+      tags:
+      - workspace-controller
+      operationId: removeUserFromWorkspace
+      parameters:
+      - name: requestingUserEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: workspaceId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /users:
+    get:
+      tags:
+      - user-controller
+      operationId: getAllUsers
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      tags:
+      - user-controller
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/User'
+  /transform/test:
+    post:
+      tags:
+      - transform
+      operationId: testTransform
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransformDto'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /flows/execute:
+    post:
+      tags:
+      - flow-controller
+      operationId: executeFlow
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteFlow'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /flows/{id}:
+    get:
+      tags:
+      - flow-controller
+      operationId: getFlow
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Flow'
+    delete:
+      tags:
+      - flow-controller
+      operationId: deleteFlow
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+  /flows/{id}/runs:
+    get:
+      tags:
+      - flow-controller
+      operationId: getFlowRuns
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FlowRun'
+  /flows/{flowId}/versions/{versionId}:
+    get:
+      tags:
+      - flow-controller
+      operationId: readFlowFileVersion
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: flowId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: versionId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /flows/read/{id}:
+    get:
+      tags:
+      - flow-controller
+      operationId: readFlow
+      parameters:
+      - name: userEmail
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+components:
+  schemas:
+    Flow:
+      required:
+      - description
+      - name
+      - versions
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        description:
+          type: string
+        currentFlowVersion:
+          $ref: '#/components/schemas/FlowVersion'
+        versions:
+          type: array
+          items:
+            $ref: '#/components/schemas/FlowVersion'
+        workspace:
+          $ref: '#/components/schemas/Workspace'
+        createdAt:
+          type: string
+          format: date-time
+    FlowVersion:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        flow:
+          $ref: '#/components/schemas/Flow'
+        createdAt:
+          type: string
+          format: date-time
+    Workspace:
+      required:
+      - flows
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        flows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flow'
+    User:
+      required:
+      - email
+      - firstName
+      - lastName
+      - workspaces
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        workspaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserWorkspace'
+    UserWorkspace:
+      required:
+      - role
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        workspace:
+          $ref: '#/components/schemas/Workspace'
+        user:
+          $ref: '#/components/schemas/User'
+        role:
+          type: string
+          enum:
+          - OWNER
+          - ADMIN
+          - MEMBER
+          - GUEST
+    UpdateFlow:
+      required:
+      - flowId
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        program:
+          type: string
+        flowId:
+          type: integer
+          format: int64
+    TransformDto:
+      type: object
+      properties:
+        input:
+          type: string
+        program:
+          type: string
+    CreateFlow:
+      required:
+      - description
+      - name
+      - program
+      - workspaceId
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        program:
+          type: string
+        workspaceId:
+          type: integer
+          format: int64
+    ExecuteFlow:
+      required:
+      - flowId
+      - input
+      type: object
+      properties:
+        flowId:
+          type: integer
+          format: int64
+        input:
+          type: string
+    FlowRun:
+      required:
+      - payload
+      - response
+      - status
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        flowVersion:
+          $ref: '#/components/schemas/FlowVersion'
+        status:
+          type: string
+          enum:
+          - SUCCESS
+          - FAILED
+          - UNKNOWN
+        startedAt:
+          type: string
+          format: date-time
+        completedAt:
+          type: string
+          format: date-time
+        payload:
+          type: string
+        response:
+          type: string
