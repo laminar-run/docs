@@ -23,12 +23,12 @@
   },
   "tabs": [
     {
-        "name": "Language Reference",
-        "url": "lam"
+      "name": "Language Reference",
+      "url": "lam"
     },
     {
-        "name": "Laminar API Reference",
-        "url": "api-reference"
+      "name": "Laminar API Reference",
+      "url": "api-reference"
     }
   ],
   "navigation": [
@@ -47,30 +47,50 @@
       ]
     },
     {
-      "group": "Laminar API Reference",
+      "group": "Workspaces",
       "pages": [
-        "api-reference/introduction",
-        "api-reference/flow-controller/get-flows",
-        "api-reference/flow-controller/post-flows",
-        "api-reference/flow-controller/put-flows",
-        "api-reference/flow-controller/delete-flows",
-        "api-reference/flow-controller/get-flowsread",
-        "api-reference/flow-controller/post-flowsexecute",
-        "api-reference/flow-controller/get-flows-versions",
-        "api-reference/flow-controller/get-flows-runs",
-        "api-reference/user-controller/get-users",
-        "api-reference/user-controller/post-users",
-        "api-reference/user-controller/put-users",
-        "api-reference/user-controller/delete-users",
-        "api-reference/user-controller/get-users-1",
-        "api-reference/workspace-controller/get-workspaces",
-        "api-reference/workspace-controller/post-workspaces",
-        "api-reference/workspace-controller/put-workspaces",
-        "api-reference/workspace-controller/delete-workspaces",
-        "api-reference/workspace-controller/get-workspaces-1",
-        "api-reference/workspace-controller/post-workspaces-users",
-        "api-reference/workspace-controller/delete-workspaces-users",
-        "api-reference/transform/post-transformtest"
+        "workspaces/get-a-workspace-by-id",
+        "workspaces/update-workspace",
+        "workspaces/delete-workspace",
+        "workspaces/get-all-workspaces",
+        "workspaces/create-a-new-workspace",
+        "workspaces/get-all-users-in-a-workspace",
+        "workspaces/add-user-to-workspace",
+        "workspaces/remove-user-from-workspace"
+      ]
+    },
+    {
+      "group": "Users",
+      "pages": [
+        "users/update-user",
+        "users/delete-user",
+        "users/get-current-user",
+        "users/create-a-new-user"
+      ]
+    },
+    {
+      "group": "Flows",
+      "pages": [
+        "flows/update-flow",
+        "flows/create-flow",
+        "flows/execute-flow",
+        "flows/get-flow",
+        "flows/delete-flow",
+        "flows/get-flow-runs",
+        "flows/read-flow-file-version",
+        "flows/read-flow"
+      ]
+    },
+    {
+      "group": "Transform",
+      "pages": [
+        "transform/test-transform"
+      ]
+    },
+    {
+      "group": "Authentication",
+      "pages": [
+        "authentication/get-a-token"
       ]
     }
   ],
