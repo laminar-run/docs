@@ -11,6 +11,9 @@
     "light": "#FFFFFF",
     "dark": "#0B0B0B"
   },
+  "openapi": [
+    "/api-docs.yaml"
+  ],
   "topbarLinks": [
     {
       "name": "Book a Demo",
