@@ -5,4 +5,126 @@ description: 'Introduction to the lam data transformation language.'
 
 # Lam Language
 
-`Lam` is a data transformation language that allows you to transform data from one format to another.
+`Lam` is a DSL for data transformation.
+
+It runs on the Laminar platform and is used to transform data when `flows` are executed.
+
+Our language documentation is currently under construction. Please check back soon for a full language reference.
+
+## Example
+
+In this example, we will transform the following JSON:
+
+```json
+{
+  "message": "Hello lam",
+  "foo": "delete me",
+  "http_status": "200"
+}
+```
+
+Into the following JSON:
+
+```json
+{
+  "message": "Hello lam",
+  "timestamp": "2021-01-01T00:00:00Z",
+  "http_status_code": 200,
+  "status": "success"
+}
+```
+
+Using the following `lam` script:
+
+```lam
+# Remove some fields
+del(.foo)
+
+# Add a timestamp
+.timestamp = now()
+
+# Parse HTTP status code into local variable
+http_status_code = parse_int!(.http_status)
+del(.http_status)
+
+# Add status
+if http_status_code >= 200 && http_status_code <= 299 {
+    .status = "success"
+} else {
+    .status = "error"
+}
+```
+
+Here's what's happening:
+
+- `del(.foo)` removes the `foo` field from the input.
+- `.timestamp = now()` adds a new field called `timestamp` with the current time.
+- `http_status_code = parse_int!(.http_status)` parses the `http_status` field into a local variable called `http_status_code`.
+- `del(.http_status)` removes the `http_status` field from the input.
+- `if http_status_code >= 200 && http_status_code <= 299 {` starts an if statement.
+- `.status = "success"` adds a new field called `status` with the value `success`.
+- `} else {` starts the else block.
+- `.status = "error"` adds a new field called `status` with the value `error`.
+- `}` ends the if statement.
+
+With the input our script will produce the following output:
+
+```json
+{
+  "message": "Hello lam",
+  "timestamp": "2021-01-01T00:00:00Z",
+  "http_status_code": 200,
+  "status": "success"
+}
+```
+
+We can easily modify the script to produce different output. For example, we can change the `status` field to be a boolean called `succeeded`:
+
+```lam
+# Remove some fields
+del(.foo)
+
+# Add a timestamp
+.timestamp = now()
+
+# Parse HTTP status code into local variable
+http_status_code = parse_int!(.http_status)
+del(.http_status)
+
+# Add succeeded
+if http_status_code >= 200 && http_status_code <= 299 {
+    .succeeded = true
+} else {
+    .succeeded = false
+}
+```
+
+This will produce the following output:
+
+```json
+{
+  "message": "Hello lam",
+  "timestamp": "2021-01-01T00:00:00Z",
+  "http_status_code": 200,
+  "status": true
+}
+```
+
+### Want to learn more?
+
+<CardGroup>
+
+<Card
+  title="Book A Demo"
+  icon="square-code"
+  href="https://calendly.com/faiz-laminar/30min"
+>
+    Let us show you how Laminar can help your team build integrations faster.
+</Card>
+
+<Card title="Get In Touch" icon="envelope" href="mailto:connect@laminar.run">
+    We'd love to hear your integration needs, and figure out how we can help.
+</Card>
+
+</CardGroup>
+

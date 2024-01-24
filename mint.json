@@ -41,26 +41,14 @@
     {
       "group": "Laminar",
       "pages": [
-        "platform/introduction",
-        "platform/try-it-out"
+        "platform/introduction"
       ]
     },
     {
       "group": "Language Reference",
       "pages": [
         "lam/introduction",
-        {
-          "group": "Basics",
-          "pages": [
-            "lam/basics"
-          ]
-        },
-        {
-          "group": "Playground",
-          "pages": [
-            "lam/playground"
-          ]
-        }
+        "lam/playground"
       ]
     }
   ],
