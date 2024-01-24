@@ -5,11 +5,12 @@ description: 'Learn more about Laminar'
 
 ## What is Laminar?
 
-Laminar is a platform that helps build API integrations faster.
+Laminar is a platform that helps build and maintain custom API integrations faster.
 
-## Why do you need Laminar?
+## API integrations are painful to build.
 
-Building API integrations is hard.
+- Writing code to transform data of different formats is complicated and error prone; and
+- Managing different integration workflows based on arbitrary system state can quickly become a nightmare to maintain.
 
 **SaaS businesses need custom integrations**
 
@@ -29,7 +30,7 @@ Laminar acts as a middleware between your system and the API you want to integra
 
 ![Laminar API Setup](https://github.com/laminar-run/public-assets/blob/main/pipeline-demo.gif?raw=true)
 
-Engineers specify how data should be transformed in Laminar using operations written in **JSON**.
+Engineers specify how data should be transformed in Laminar using operations written in [**Lam**](/lam/introduction)
 
 ![Laminar Data Transformation](https://github.com/laminar-run/public-assets/blob/main/editor.png?raw=true)
 
@@ -37,21 +38,15 @@ Engineers specify how data should be transformed in Laminar using operations wri
 
 You can run a flow by sending a request to Laminar's API with the flow's ID.
 
-<Accordion title="Example request to run a flow">
 ```bash
-curl --location --request POST 'https://api.laminar.run/flows/run/:flowId \
---header 'Content-Type: application/json' \
---data-raw '{
-    "input": {
-        "square": {
-            "locationId": "LAMINAR",
-            "startDate": "2021-01-01T00:00:00Z",
-            "endDate": "2021-01-02T00:00:00Z"
-        }
-    }
-}'
+curl --location --request POST 'https://api.laminar.run/flows/execute' \
+     --header 'Content-Type: application/json' \
+     --header 'Authorization: Bearer <API_KEY>' \
+     --data-raw '{
+         "input": '{"message":"Hello lam","foo":"delete me","http_status":"200"}'
+         "flowId": 123,
+     }'
 ```
-</Accordion>
 
 ## Watch Laminar transform data in real-time
 

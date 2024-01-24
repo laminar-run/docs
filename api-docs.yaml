@@ -254,15 +254,15 @@ paths:
           content:
             "*/*":
               schema:
-                type: string
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
         "404":
           description: Workspace not found
           content:
             "*/*":
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/User"
+                type: string
       security:
         - bearerAuth: []
     post:
@@ -591,6 +591,11 @@ paths:
       security:
         - bearerAuth: []
 components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
   schemas:
     Flow:
       required:

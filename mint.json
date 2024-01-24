@@ -23,6 +23,10 @@
   },
   "tabs": [
     {
+      "name": "API Reference",
+      "url": "api-reference"
+    },
+    {
       "name": "Language Reference",
       "url": "lam"
     }
@@ -31,62 +35,79 @@
     {
       "group": "Laminar",
       "pages": [
-        "introduction",
-        "try-it-out"
+        "platform/introduction",
+        "platform/try-it-out"
       ]
     },
     {
       "group": "Language Reference",
       "pages": [
         "lam/introduction",
-        "lam/playground"
+        {
+          "group": "Basics",
+          "pages": [
+            "lam/basics"
+          ]
+        },
+        {
+          "group": "Playground",
+          "pages": [
+            "lam/playground"
+          ]
+        }
       ]
     },
     {
-      "group": "Workspaces",
+      "group": "API Reference",
       "pages": [
-        "workspaces/get-a-workspace-by-id",
-        "workspaces/update-workspace",
-        "workspaces/delete-workspace",
-        "workspaces/get-all-workspaces",
-        "workspaces/create-a-new-workspace",
-        "workspaces/get-all-users-in-a-workspace",
-        "workspaces/add-user-to-workspace",
-        "workspaces/remove-user-from-workspace"
-      ]
-    },
-    {
-      "group": "Users",
-      "pages": [
-        "users/update-user",
-        "users/delete-user",
-        "users/get-current-user",
-        "users/create-a-new-user"
-      ]
-    },
-    {
-      "group": "Flows",
-      "pages": [
-        "flows/update-flow",
-        "flows/create-flow",
-        "flows/execute-flow",
-        "flows/get-flow",
-        "flows/delete-flow",
-        "flows/get-flow-runs",
-        "flows/read-flow-file-version",
-        "flows/read-flow"
-      ]
-    },
-    {
-      "group": "Transform",
-      "pages": [
-        "transform/test-transform"
-      ]
-    },
-    {
-      "group": "Authentication",
-      "pages": [
-        "authentication/get-a-token"
+        "api-reference/introduction",
+        {
+          "group": "Workspaces",
+          "pages": [
+            "api-reference/workspaces/get-a-workspace-by-id",
+            "api-reference/workspaces/update-workspace",
+            "api-reference/workspaces/delete-workspace",
+            "api-reference/workspaces/get-all-workspaces",
+            "api-reference/workspaces/create-a-new-workspace",
+            "api-reference/workspaces/get-all-users-in-a-workspace",
+            "api-reference/workspaces/add-user-to-workspace",
+            "api-reference/workspaces/remove-user-from-workspace"
+          ]
+        },
+        {
+          "group": "Users",
+          "pages": [
+            "api-reference/users/update-user",
+            "api-reference/users/delete-user",
+            "api-reference/users/get-current-user",
+            "api-reference/users/create-a-new-user"
+          ]
+        },
+        {
+          "group": "Flows",
+          "pages": [
+            "api-reference/flows/update-flow",
+            "api-reference/flows/create-flow",
+            "api-reference/flows/execute-flow",
+            "api-reference/flows/get-flow",
+            "api-reference/flows/delete-flow",
+            "api-reference/flows/get-flow-runs",
+            "api-reference/flows/read-flow-file-version",
+            "api-reference/flows/read-flow"
+          ]
+        },
+        {
+          "group": "Transform",
+          "pages": [
+            "api-reference/transform/test-transform"
+          ]
+        },
+        {
+          "group": "Authentication",
+          "pages": [
+            "api-reference/authentication/get-a-token"
+          ]
+        }
       ]
     }
   ],
