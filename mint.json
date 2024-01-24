@@ -24,11 +24,14 @@
     "name": "Sign In",
     "url": "https://app.laminar.run/auth/signin"
   },
-  "tabs": [
+  "anchors": [
     {
       "name": "API Reference",
-      "url": "api-reference"
-    },
+      "url": "https://api-reference.laminar.run/version-0/reference",
+      "icon": "code"
+    }
+  ],
+  "tabs": [
     {
       "name": "Language Reference",
       "url": "lam"
@@ -56,59 +59,6 @@
           "group": "Playground",
           "pages": [
             "lam/playground"
-          ]
-        }
-      ]
-    },
-    {
-      "group": "API Reference",
-      "pages": [
-        "api-reference/introduction",
-        {
-          "group": "Workspaces",
-          "pages": [
-            "api-reference/workspaces/get-a-workspace-by-id",
-            "api-reference/workspaces/update-workspace",
-            "api-reference/workspaces/delete-workspace",
-            "api-reference/workspaces/get-all-workspaces",
-            "api-reference/workspaces/create-a-new-workspace",
-            "api-reference/workspaces/get-all-users-in-a-workspace",
-            "api-reference/workspaces/add-user-to-workspace",
-            "api-reference/workspaces/remove-user-from-workspace"
-          ]
-        },
-        {
-          "group": "Users",
-          "pages": [
-            "api-reference/users/update-user",
-            "api-reference/users/delete-user",
-            "api-reference/users/get-current-user",
-            "api-reference/users/create-a-new-user"
-          ]
-        },
-        {
-          "group": "Flows",
-          "pages": [
-            "api-reference/flows/update-flow",
-            "api-reference/flows/create-flow",
-            "api-reference/flows/execute-flow",
-            "api-reference/flows/get-flow",
-            "api-reference/flows/delete-flow",
-            "api-reference/flows/get-flow-runs",
-            "api-reference/flows/read-flow-file-version",
-            "api-reference/flows/read-flow"
-          ]
-        },
-        {
-          "group": "Transform",
-          "pages": [
-            "api-reference/transform/test-transform"
-          ]
-        },
-        {
-          "group": "Authentication",
-          "pages": [
-            "api-reference/authentication/get-a-token"
           ]
         }
       ]
