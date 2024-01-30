@@ -1,0 +1,64 @@
+---
+title: Run a Flow
+description: 'Run a Flow in Laminar'
+---
+
+Now that you have a Workspace and a Flow, you can run your Flow.
+
+You can first run your flow without any data transformations with some simple input data.
+
+We'll use the following input data:
+
+```json
+{                             
+   "message": "Hello lam",   
+   "foo": "delete me",     
+   "http_status": "200"   
+}                        
+```
+
+![Demo](https://github.com/laminar-run/public-assets/blob/main/Running%20An%20Empty%20Flow.gif?raw=true)
+
+1. From your Workspace Dashboard, click **Create Flow** on the bottom left of the Flows table.
+2. Give your Flow a name and a description and click **Create Flow**.
+3. Add input data for the test by pasting the JSON above into the **Input** field.
+
+We'll now add a simple transformation to our Flow.
+
+```coffee
+# Remove some fields
+del(.foo)
+
+# Add a timestamp
+.timestamp = now()
+
+# Parse HTTP status code into local variable
+http_status_code = parse_int!(.http_status)
+del(.http_status)
+
+# Add status
+if http_status_code >= 200 && http_status_code <= 299 {
+    .status = "success"
+} else {
+    .status = "error"
+}
+```
+
+Our Flow will take the input data and transform it into the following output data:
+
+```json
+{                             ->   {  
+   "message": "Hello lam",            "message": "Hello lam",
+   "foo": "delete me",        ->      "status": "success"
+   "http_status": "200"               "timestamp": "2024-01-29T12:00:00Z"
+}                             ->   }
+```
+
+![Demo](https://github.com/laminar-run/public-assets/blob/main/Run%20A%20Flow%20In%20Laminar.gif?raw=true)
+
+3. In the Flow Editor, add a program to your Flow in Lam, and click **Update Flow**.
+4. Click **Run Flow**, and you should see your transformed output data.
+
+Amazing! 🎉 You've just run your first Flow in Laminar.
+
+Now you'll want to run your Flow with real data using Laminar's API.

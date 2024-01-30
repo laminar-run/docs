@@ -33,6 +33,10 @@
   ],
   "tabs": [
     {
+      "name": "Concepts",
+      "url": "concepts"
+    },
+    {
       "name": "Language Reference",
       "url": "lam"
     }
@@ -41,14 +45,32 @@
     {
       "group": "Laminar",
       "pages": [
-        "platform/introduction"
+        "introduction",
+        "playground"
+      ]
+    },
+    {
+      "group": "Platform",
+      "pages": [
+        "platform/get-started",
+        "platform/create-a-workspace",
+        "platform/create-a-flow",
+        "platform/run-a-flow",
+        "platform/run-flow-with-api"
+      ]
+    },
+    {
+      "group": "Concepts",
+      "pages": [
+        "concepts/integrations",
+        "concepts/flows"
       ]
     },
     {
       "group": "Language Reference",
       "pages": [
         "lam/introduction",
-        "lam/playground"
+        "lam/basics"
       ]
     }
   ],

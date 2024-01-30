@@ -1,0 +1,87 @@
+---
+title: Introduction
+description: 'Learn more about Laminar'
+---
+
+## What is Laminar?
+
+Laminar is a platform that helps build and maintain custom [**API integrations**](/concepts/integrations) faster.
+
+## How does it work?
+
+### Send data in the format you want
+
+Laminar acts as a middleware between your system and the API you want to integrate with.
+
+![Laminar API Setup](https://github.com/laminar-run/public-assets/blob/main/pipeline-demo.gif?raw=true)
+
+### Build workflows between APIs
+
+Use workflows in Laminar to send and receive data between APIs based on your business logic.
+
+![Laminar Workflow](https://github.com/laminar-run/public-assets/blob/main/Complex%20Workflows.gif?raw=true)
+
+### Transform data on the fly
+
+Specify how data should be transformed between APIs in Laminar using operations written in [**Lam (Laminar's data transformation DSL)**](/lam/introduction).
+
+```coffee
+# JSON
+# {                             ->   {  
+#    "message": "Hello lam",            "message": "Hello lam",
+#    "foo": "delete me",        ->      "status": "success"
+#    "http_status": "200"               "timestamp": "2024-01-29T12:00:00Z"
+# }                             ->   }
+
+# Remove some fields
+del(.foo)
+
+# Add a timestamp
+.timestamp = now()
+
+# Parse HTTP status code into local variable
+http_status_code = parse_int!(.http_status)
+del(.http_status)
+
+# Add status
+if http_status_code >= 200 && http_status_code <= 299 {
+    .status = "success"
+} else {
+    .status = "error"
+}
+```
+
+## Watch a demo
+
+Watch Laminar transform JSON data using a simple [**Flow**](/concepts/flows).
+
+![Demo](https://github.com/laminar-run/public-assets/blob/main/Run%20A%20Flow%20In%20Laminar.gif?raw=true)
+
+## Run integrations anywhere
+
+Run data transformations on data from anywhere using the Laminar API.
+
+```bash
+curl --location --request POST 'https://api.laminar.run/flows/execute' \
+     --header 'Content-Type: application/json' \
+     --header 'Authorization: Bearer <token>' \
+     --data-raw '{
+         "input": '{"message":"Hello lam","foo":"delete me","http_status":"200"}',
+         "flowId": 10,
+     }'
+```
+
+### Want to learn more?
+
+<CardGroup>
+    <Card
+        title="Book A Demo"
+        icon="square-code"
+        href="https://calendly.com/faiz-laminar/30min"
+    >
+        Let us show you how Laminar can help your team build integrations faster.
+    </Card>
+    <Card title="Get In Touch" icon="envelope" href="mailto:connect@laminar.run">
+        We'd love to hear your integration needs, and figure out how we can help.
+    </Card>
+</CardGroup>

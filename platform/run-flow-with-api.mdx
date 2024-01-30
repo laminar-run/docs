@@ -1,0 +1,80 @@
+---
+title: Run a Flow with Laminar's API
+description: 'Run a Flow outside of the Laminar using the API'
+---
+
+To access Laminar's API endpoints, you need to obtain an authorization token. Laminar uses Bearer authentication, which means that you need to include the token in the `Authorization` header of your request.
+
+Example:
+
+```bash
+curl --request POST \
+  --url https://api.laminar.run/flows/execute \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Beaerer <token>' \
+  --data '{
+      "input": '{"message":"Hello lam","foo":"delete me","http_status":"200"}', 
+      "flowId": "<flow id>"
+    }'
+```
+
+### Get an Auth token
+
+1. Make a POST request to the `/auth/getToken` endpoint.
+2. Include the required request body in JSON format. The body should contain the necessary login credentials.
+3. If the login is successful, you will receive a response with a status code of 200 and a token in the response body.
+
+Store the token securely as it will be required for subsequent API requests.
+
+For flow running purposes, we recommend using a **Runner Account**.
+
+You can create a runner account by creating a new user in Laminar and inviting it to your Workspace. You can then use the runner account's credentials to obtain an auth token.
+
+Example Request:
+
+```bash
+curl --request POST \
+  --url https://api.laminar.run/auth/getToken \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "username": "<your runner account email>",
+    "password": "<your runner account password>"
+  }'
+```
+
+Example Response:
+
+```json
+{
+  "access_token": "<token>",
+  "token_type": "Bearer",
+  "expires_in": "3600",
+  "refresh_token": "<token>"
+}
+```
+
+### Run a Flow
+
+1. Make a POST request to the `/flows/execute` endpoint.
+2. Include the required request body in JSON format. The body should contain the flow ID and the input data.
+3. If the flow is executed successfully, you will receive a response with a status code of 200 and the output data in the response body.
+4. If the flow fails to execute, you will receive a response with a status code of 400 and the error message in the response body.
+
+### Read the API reference
+
+<CardGroup>
+    <Card
+        title="Get an Auth Token"
+        icon="code"
+        href="https://api-reference.laminar.run/version-0/reference#tag/authentication/post/auth/getToken"
+    >
+      Read the API docs to learn how to get an auth token.
+    </Card>
+    <Card
+        title="Run a Flow"
+        icon="play"
+        href="https://api-reference.laminar.run/version-0/reference#tag/flows/post/flows/execute"
+    >
+      Read the API docs to learn how to run a flow.
+    </Card>
+</CardGroup>

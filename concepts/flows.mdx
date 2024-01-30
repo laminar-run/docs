@@ -1,0 +1,24 @@
+---
+title: Flows
+description: 'Understanding Flows in Laminar'
+---
+
+![Flows](https://github.com/laminar-run/public-assets/blob/main/Flow%20Animated.gif?raw=true)
+
+## What are Flows?
+
+Flows are data transformation jobs that run on Laminar.
+
+Each Flow has a program that can be executed, which can be modified at any time.
+
+Programs are written in [**Lam (Laminar's data transformation DSL)**](/lam/introduction).
+
+Flows can be executed by calling the [**Laminar API**](/platform/run-flow-with-api).
+
+## Input
+
+Flows take an input when they are executed. This input is a JSON object that will be transformed by the Flow's program.
+
+## Versioning
+
+Every update to a Flow is versioned. This means that you can always go back to a previous version of a Flow.
